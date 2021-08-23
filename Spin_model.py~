@@ -1,0 +1,84 @@
+### Markov chain Monte Carlo simulation
+### Ising model matrix calcation
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from numpy.random import rand
+import torch
+
+torch.set_default_tensor_type(torch.DoubleTensor)
+
+
+class Spin_simulation():
+    def __init__(self, system_size, sample_size, Temperature, equalibrium, sampling_interval):
+        self.N = system_size
+        self.M = sample_size
+        self.T = Temperature
+        self.eq_T = equalibrium
+        self.K = sampling_interval
+
+        self.config = np.random.choice([-1.,1.] , size=self.N, replace = True)
+        self.config = torch.from_numpy(self.config)
+        self.samples = torch.zeros(self.N ,self.M,len(self.T))
+
+    def adjacency_matrix(self, type):
+        if type =='2D-Ising':
+            L = int(np.sqrt(self.N))
+            J = np.zeros((self.N,self.N))
+            k = 0
+            for a in range(self.N):
+                for b in range(self.N):
+                    i = a%L + ( b * L )%L**2 
+                    j = (a+1)%L + ( b * L )%L**2 
+                    J[i,j] = 1
+                    J[j,i] = 1
+                    k+=1
+                    j = (a)%L + ( (b+1)*L )%L**2
+                    J[i,j] = 1
+                    J[j,i] = 1
+                    k+=1
+            
+        elif type == 'SK-model':
+            var = 1./np.sqrt(self.N/2) 
+            H = np.random.normal(0., var, size = (self.N,self.N))
+            for k in range(self.N):  H[k,k] = 0
+            J = (H + H.T)/2
+            
+        else:
+            print('Input 2D-Ising or SK-model')
+            J = 0.
+        self.J = torch.from_numpy(J)
+        
+        
+    def move(self,t):
+
+        for i in range(self.N):
+            dE =  2.*self.J[i,:]@self.config* self.config[i]
+
+            if rand()<torch.exp(-dE/t):
+                self.config[i] *= -1
+                
+                
+    def set_cuda(self):
+        if torch.cuda.is_available():
+            self.config = self.config.to('cuda')
+            self.J = self.J.to('cuda')
+            self.samples = self.samples.to('cuda')
+        else:
+          print('cuda is not avilable')
+
+                
+                
+    def MC_Sampling(self):
+
+        for t_idx,t in enumerate(self.T):
+            for _ in range(self.eq_T): 
+                Spin_simulation.move(self,t)
+
+            for k_sample in range(self.M):                            ### cal T
+                for _ in range(self.K):
+                    Spin_simulation.move(self,t)
+                self.samples[:,k_sample,t_idx] = self.config
+        
+        return self.samples
