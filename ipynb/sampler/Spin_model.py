@@ -66,7 +66,7 @@ class Spin_simulation():
             self.J = self.J.to('cuda')
             self.samples = self.samples.to('cuda')
         else:
-          print('cuda is not avilable')
+            print('cuda is not avilable')
 
                 
                 

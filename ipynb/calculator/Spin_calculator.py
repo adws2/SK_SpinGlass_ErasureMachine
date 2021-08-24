@@ -1,4 +1,3 @@
-import Spin_model
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -80,7 +79,7 @@ class calculator():
     
     def Edward_Anderson(self):
         ## sample shape : N X M X len_T
-        ## q_EA ~ <Si * Sj> -- i,j ´Â ´Ù¸¥ »ùÇÃ
+        ## q_EA ~ <Si * Sj> -- i,j ëŠ” ë‹¤ë¥¸ ìƒ˜í”Œ
     
         q_array = np.zeros(self.len_T)
         

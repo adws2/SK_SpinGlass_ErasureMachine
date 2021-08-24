@@ -68,3 +68,11 @@ class fit():
             w += self.learning_rate*(ops_expect_w - w*self.epsilon - self.regularizer*w)
 
         return w
+
+    def J_to_w(J):
+        # adjacency matrix -> parameters 
+        N = len(J)
+        iu1 = np.triu_indices(N,1)
+        w = J[iu1]
+        return w
+

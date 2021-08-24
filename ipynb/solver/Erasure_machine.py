@@ -16,7 +16,7 @@ class fit():
         self.regularizer = regularizer
         
         
-    def operators(configuration):
+    def operators(self,configuration):
         #O = <S_i S_j>
         system_size,sample_size = configuration.shape
         Op = np.zeros((int(system_size*(system_size-1)/2), sample_size))
@@ -68,3 +68,11 @@ class fit():
             w += self.learning_rate*(ops_expect_w - w*self.epsilon - self.regularizer*w)
 
         return w
+
+    def J_to_w(self,J):
+        # adjacency matrix -> parameters 
+        N = len(J)
+        iu1 = np.triu_indices(N,1)
+        w = J[iu1]
+        return w
+
