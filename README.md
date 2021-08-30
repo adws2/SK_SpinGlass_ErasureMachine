@@ -1,8 +1,14 @@
-Tmperature-dependent performance of the erasure machine
+# Tmperature-dependent performance of the erasure machine
 
-ë¯¸ì™„
+ÁøÇàÁß
 
-### update rule
+### Update rule
+![updaterule](image/update_rule.png)
 
->$J^{n+1}_{ij} 
-\approx J^{n}_{ij} + \alpha (\left\langle s_i s_j \right\rangle^{f_\epsilon} -  \epsilon J^{n}_{ij} -\lambda J^{n}_{ij}$.
+
+### Result
+Spin glass susceptiblibities of the SK model
+![Criticality](image/Criticality.svg)
+
+Performance of the erasure machine
+![performance](image/Performance.svg)
