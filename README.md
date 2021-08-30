@@ -1,4 +1,4 @@
-# Tmperature-dependent performance of the erasure machine
+# Temperature-dependent performance of the erasure machine
 
 진행중
 
