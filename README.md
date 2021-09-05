@@ -12,3 +12,6 @@
 
  - Performance of the erasure machine  
 <img src="image/Performance.svg" width="300" height="300">
+
+
+https://dcollection.skku.edu/srch/srchDetail/000000165801
