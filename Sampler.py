@@ -138,3 +138,12 @@ class simulater():
 
 
         return A/A[0]
+
+    def w_to_J(self,w):
+        #A : parameter vector
+        #L: number of node
+        A = np.triu_indices(L,1)
+        self.J = np.zeros((L,L))
+        for i,(a,b) in enumerate(zip(A[0],A[1])):
+            self.J[a,b] = w[i]
+            self.J[b,a] = w[i]
