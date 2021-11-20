@@ -8,7 +8,8 @@
 
 2. The authors said in the Introduction that "Without much consideration, one can expect that EM performance is maximized near the critical temperature for the phase transition." This statement needs to be elaborated more in the Introduction to deliver a clear idea to readers about what motivates this work.
 
-- Re : 
+- Re : 고온과 저온에서 성능은 나쁘고 중간지점에서는 성능이 좋을것이라고 예상해 볼 수 있다 ,as we mension on our paper(page2-3). 시스템에 대한 chariteristic temperature 는 Tc 밖에 없다. 
+샘플복잡도에 대해 생각해보면,,,
 
 ### Reviwer B
 
