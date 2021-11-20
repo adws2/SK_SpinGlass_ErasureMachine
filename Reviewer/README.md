@@ -1,10 +1,8 @@
 ## Revision
 
-### <span style="color:red">Reviewer A</span>
+### Reviewer A
 
-<span style="color:red">붉은 색</span>
 1.  I don't understand why the beta does not appear in Eq. (9) because the authors' p(s|J) has beta. I think that Eqs. (9-11) should be rechecked for mathematical rigor, although the beta should be irrelevant in the end for maximization of the log-likelihood function.
-
 
 - Re : The major purpose of inverse Ising problems is to infer for network structure such as protein network, stock network and these networks are difficult to define temperature. Thus the beta is conventionally excluded from the Boltzmann distribution, in inverse Ising problem.
 
