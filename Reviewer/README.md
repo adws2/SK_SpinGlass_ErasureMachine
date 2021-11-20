@@ -4,7 +4,7 @@
 
 1.  I don't understand why the beta does not appear in Eq. (9) because the authors' p(s|J) has beta. I think that Eqs. (9-11) should be rechecked for mathematical rigor, although the beta should be irrelevant in the end for maximization of the log-likelihood function.
 
-- Re : The major purpose of inverse Ising problems is to infer for network structure such as protein network, stock network and these networks are difficult to define temperature. Thus the beta is conventionally excluded from the Boltzmann distribution, in inverse Ising problem.
+- Re : The major purpose of inverse Ising problems is to infer for network structure such as protein network, stock network and so on, and these networks are difficult to define temperature. Thus the beta is conventionally excluded from the Boltzmann distribution, in inverse Ising problem.
 
 2. The authors said in the Introduction that "Without much consideration, one can expect that EM performance is maximized near the critical temperature for the phase transition." This statement needs to be elaborated more in the Introduction to deliver a clear idea to readers about what motivates this work.
 
