@@ -8,9 +8,9 @@
 
 2. The authors said in the Introduction that "Without much consideration, one can expect that EM performance is maximized near the critical temperature for the phase transition." This statement needs to be elaborated more in the Introduction to deliver a clear idea to readers about what motivates this work.
 
-- Re : 2 page 마지막
-고온과 저온에서 성능은 나쁘고 중간지점에서는 성능이 좋을것이라고 예상해 볼 수 있다 ,as we mension on our paper(page2-3). 시스템에 대한 chariteristic temperature 는 Tc 밖에 없다. 
-샘플복잡도에 대해 생각해보면,,,
+- Re : 2 page 마지막\\
+Without much consideration, one can expect that EM performance is maximized near the critical temperature of the phase transition.
+->  
 
 ### Reviwer B
 
@@ -27,8 +27,8 @@ Please check the attached detailed results.
 3. It is expected that the erasure machine works best for samples generated at an intermediate temperature somewhere between low and high temperature. However, it is not clear why they speculate that the optimal temperature may correspond to the critical temperature. I wonder the motivation for this speculation. 
 
 - Re : 
-- 샘플 complexity를 생각해보면, 간단한 형태의 PDF를 가지고 있는 high temperature sample 과 low temperature sample 은 학습이 잘 되어지지 않을것 이다.\\
-그렇다면, 어느 중간 온도에서 학습이 가장 잘 될 텐데, criteristic temperature 가 Tc 말고는 없기 때문에 Tc에서 학습이 잘 될 것이라고 생각했다.
+Since the spins are frozen at low temperatures and the entropy increases at high temperatures, there must exist a temperature with minimum error as mentioned in the text. \\
+At first, we thought that there was a minimal error in Tc because the only characteristic temperature of the system was Tc.
 
 4. They observed that as a system gets larger, better inference resulted from samples generated at a higher temperature than the critical temperature. They mentioned that this was unexpected since they expect that their speculation would fit better at the thermodynamic limit with a larger system size. My opinion is different. For equivalent quality of inference for a larger system, more samples are usually required than a smaller system. Thus the deviation from their expectation may originate from the relative insufficiency of samples for the larger system. I suggest the authors explore their speculation more carefully with a larger system size. In Fig. 4(a), as sample size is larger, optimal inference seems to occur near the critical temperature. Furthermore, their speculation also seems to be right for the Ising model case in Fig. 7. I wonder if their best inference approaches closer into the critical temperature when they use a larger system size than M = 5000. 
 
