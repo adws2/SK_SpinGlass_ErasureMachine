@@ -21,7 +21,8 @@
 2. The performance of the erasure machine depends on the hyperparameter epsilon, and learning rate alpha. It is questionable how sensitive their findings are for these parameters. In addition, the number of iteration in the erasure machine is crucial for accurate inference because too much iteration sometimes leads to overestimation. Therefore, the optimality of the iteration should be checked more carefully. In particular, this may affect their conclusion on the speculation regarding the critical temperature (please refer the following issue). 
 
 - Re : 우리도 연구 초기에 하이퍼파라리터에 대한 영향을 체크했다. 논문에 언급한대로 하이퍼파라미터의 영향은 적었으며, 모든 시뮬레이션에서 동일하게 적용되었다.\\
-그럼에도 불구하고 영향이 아예없지는 않은데, 그림을 첨부한다. 또한 우리는 Ref.[17] 에서 해당 문제를 상세히 다루었음으로 해당 내용을 실지 않았다.
+We checked the effect on hyperparameters early in the study and the influence of hyperparameters was small as mentioned in the text. Thus we applied them equally to all processes. In addition, we are hesitant to put these results in the text because the effect of the number of iteration and the hyperparameter epsilon has been dealt with in detail in Ref.[17].
+Please check the attached detailed results.
 
 3. It is expected that the erasure machine works best for samples generated at an intermediate temperature somewhere between low and high temperature. However, it is not clear why they speculate that the optimal temperature may correspond to the critical temperature. I wonder the motivation for this speculation. 
 
