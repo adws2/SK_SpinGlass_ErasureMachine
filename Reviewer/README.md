@@ -39,8 +39,16 @@ For example, the total computaional time for our largest size, L=320, takes seve
 
 5. The authors need to comment on the effectiveness of the regularization. Why does the Ising model show better performance with the L1 regularization and the spin glass model show better performance with the L2 regularization?
 
-- Re : OK
+- Re :
+We also find that if proper regularizations are introduced in the EM inference framework, the reliability of the obtained interaction structure is enhanced.
+Since choose of proper regularizations is related to their prior information, 
+in the case of the 2D Ising model, we can input the sparsity information P_J ~ exp[-\lambda_1 |J|] in the EM as prior information,
+which is expressed as L1 regularization in update rule.
+On the other hand, prior information of the SK model can be described as Gaussian coupling matrix P_J ~ exp[-J^2].
+
+We believe that a proper regularization applied for the estimation of J can significantly enhance the performance of the  EM  method for the  SK  model since it can penalize too large value of J. 
+In case of 2D Ising model, 
 
 6. The following sentence in Summary and Discussion is difficult to understand. "The reason can be that the EM framework basically set the prior distribution to a uniform distribution." Detailed explanation is necessary.
 
--Re : OK
+- Re : OK
