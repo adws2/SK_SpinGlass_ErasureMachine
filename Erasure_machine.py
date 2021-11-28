@@ -50,7 +50,7 @@ class fit():
             ops_expect_w = torch.sum(probs_w[np.newaxis,:]*ops,axis=1)
 
 
-            w += self.learning_rate*(ops_expect_w - w*self.epsilon - L1*w - L2*w /abs(w) )
+            w += self.learning_rate*(ops_expect_w - w*self.epsilon - L2*w - L1*w /abs(w) )
 
         return w
 
