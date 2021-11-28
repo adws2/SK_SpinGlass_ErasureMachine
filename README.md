@@ -1,21 +1,11 @@
 # Temperature-dependent performance of the erasure machine
 
-진행중
-
-### Abstract
-Interaction strengths in spin systems can be estimated from the maximum likelihood estimate (MLE) method based on information of spin configurations. The application of the standard 
-MLE method has been known to face serious problems for large data set since it demands
-huge computation cost. 
-We test the performance of the erasure machine, which has been recently proposed to overcome such drawbacks of MLE, for the Sherrington-Kirkpatrick (SK) model and two-dimensional Ising model.
-In this paper, we focus on how the performance of the erasure machine varies with the temperature
-and find that it exhibits the best performance not at criticality, but at much higher temperature. 
-We also attempt to explain such temperature-dependent performance of the erasure machine.  
-
-### Update rule  
-<img src="image/update_rule.svg" width="250" >
+## Abstract
+스핀 시스템의 온도에 대한 성능을 측정합니다.
+MLE보다 속도가 매우 빠른 Erasure Machine 알고리즘을 사용했으며 저온에서의 성능을 개선시켰습니다.
 
 
-### Result
+## Result
  - Spin glass susceptiblibities of the SK model  
 <img src="image/Criticality.svg" width="300" height="300">
 
