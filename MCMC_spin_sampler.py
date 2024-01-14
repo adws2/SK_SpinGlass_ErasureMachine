@@ -3,14 +3,22 @@
 
 
 import numpy as np
-import matplotlib.pyplot as plt
 from numpy.random import rand
 import torch
 
 torch.set_default_tensor_type(torch.DoubleTensor)
 
 
-class simulater():
+class Simulater:
+    """
+    2차원 Ising 모델, 또는 SK 모델의 configuration을 MCMC로 생성합니다.
+
+    system_size : 시스템 사이즈
+    sample_size : 독립된 샘플 개수
+    Temperature : 시스템의 온도
+    equalibrium : 안정된 시스템 (평형상태)으로 도달하기 위한 MCMC-step 입력 => 경험적으로 선택
+    sampling_interval : Markov chain은 t 번째 샘플과 t + delta t 샘플의 상관관계가 존재함 -> 긴 MCMC 간격으로 샘플링 해야함
+    """
     def __init__(self, system_size, sample_size, Temperature, equalibrium, sampling_interval):
         self.N = system_size
         self.M = sample_size
@@ -70,15 +78,18 @@ class simulater():
 
                 
                 
-    def MC_Sampling(self):
+    def MC_sampling(self):
+        """
+        main processor
+        """
 
         for t_idx,t in enumerate(self.T):
             for _ in range(self.eq_T): 
-                simulater.move(self,t)
+                self.move(self,t)
 
             for k_sample in range(self.M):                            ### cal T
                 for _ in range(self.K):
-                    simulater.move(self,t)
+                    self.move(self,t)
                 self.samples[:,k_sample,t_idx] = self.config
         
         return self.samples
@@ -90,11 +101,11 @@ class simulater():
         samples = torch.zeros(self.N , self.M)
 
         for _ in range(self.eq_T):
-            simulater.move(self,t)
+            self.move(self,t)
 
         for k in range(self.M):
             samples[:,k] = self.config
-            simulater.move(self,t)
+            self.move(self,t)
 
         ave_s = torch.mean(samples, 1)
         
@@ -117,11 +128,11 @@ class simulater():
         samples = torch.zeros(self.N , self.M)
 
         for _ in range(self.eq_T):
-            simulater.move(self,t)
+            self.move(self,t)
 
         for k in range(self.M):
             samples[:,k] = self.config
-            simulater.move(self,t)
+            self.move(self,t)
         mag_array = abs(torch.mean(samples, 0))
         
         ave_m = torch.mean(mag_array)

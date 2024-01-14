@@ -1,5 +1,9 @@
+"""
+reprodued by Min Jae Jung
+(original paper: Erasure machine: Inverse Ising inference from reweighting of observation frequencies)
+"""
+
 import numpy as np
-import matplotlib.pyplot as plt
 from numpy.random import rand
 import time
 import torch
@@ -8,9 +12,8 @@ import torch
 #=========================================================================================
 torch.set_default_tensor_type(torch.DoubleTensor)
 
-class fit():
-    def __init__(self,epsilon = 0.7, learning_rate = 0.1, max_iter = 151, device = 'cuda'):
-        self.epsilon = epsilon
+class ErasureMachine:
+    def __init__(self, learning_rate = 0.1, max_iter = 151, device = 'cuda'):
         self.learning_rate = learning_rate
         self.max_iter = max_iter
         self.device = 'cpu'
@@ -18,7 +21,7 @@ class fit():
             print('Use cuda')
             self.device = 'cuda'
         
-    def operators(self,configuration):
+    def operators(self, configuration):
         #O = <S_i S_j>
         system_size,sample_size = configuration.shape
         Op = np.zeros((int(system_size*(system_size-1)/2), sample_size))
@@ -31,10 +34,18 @@ class fit():
         return Op
         
            
-    def em(self, ops, L1 = 0. , L2 = 0.):
+    def forward(self, configuration, epsilon = 0.7,  L1 = 0. , L2 = 0.):
+        """
+        ops : observed spin configuration
+        L1 : L1 regularization
+        L2 : L2 regularizarion
+
+        Return : spin adjacenct matrix (model parameter)
+        """
+        ops = self.operators(configuration)
         n_ops = ops.shape[0]
         np.random.seed(13)
-        w = np.random.rand(n_ops)-0.5
+        w = np.random.rand(n_ops)-0.5 # random initialization
 
         if self.device == 'cuda':
             w = torch.from_numpy(w).cuda()
@@ -44,13 +55,13 @@ class fit():
 
             energies_w = w@ops
 
-            probs_w = torch.exp((energies_w)*(self.epsilon-1)) 
+            probs_w = torch.exp((energies_w)*(epsilon-1)) 
             z_data = torch.sum(probs_w)
             probs_w /= z_data
             ops_expect_w = torch.sum(probs_w[np.newaxis,:]*ops,axis=1)
 
 
-            w += self.learning_rate*(ops_expect_w - w*self.epsilon - L2*w - L1*w /abs(w) )
+            w += self.learning_rate*(ops_expect_w - w*epsilon - L2*w - L1*w /abs(w) )
 
         return w
 

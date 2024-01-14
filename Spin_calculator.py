@@ -1,7 +1,6 @@
-import matplotlib.pyplot as plt
 import numpy as np
 
-class calculator():
+class Calculator:
     def __init__(self, samples):
         self.samples = samples
         self.N = samples.shape[0]
